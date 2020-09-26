@@ -49,3 +49,60 @@ amigo_de(pepe,jj).
 amigo_de(pepe,juan).
 amigo_de(laura,juan).
 amigo_de(laura,jj).
+
+
+%%rules
+
+legustan(X):-
+    le_gusta(X, Y),
+    cabello_oscuro(Y).
+
+legustanrubios(X):-
+    le_gusta(X, Y),
+    cabello_rubio(Y).
+
+pelirrojas(X):-
+    mujer(X),
+    cabello_rojo(X).
+
+amigoscantantes(X, Y):-
+    amigo_de(X,Y),
+    cantante(X),
+    cantante(Y).
+
+cantantecabellooscuroyamigodeuningeniero(X):-
+    cantante(X),
+    cabello_oscuro(X),
+    amigo_de(Y,X),
+    ingeniero(Y),
+    write(Y).
+
+amigodeeva(X):-
+    amigo_de(X, eva),
+    amigo_de(Y, X),
+    actor_actriz(Y),
+    cabello_rojo(Y),
+    write(X), 
+    write.
+
+amigosencomun(X):-
+    le_gusta(X,Y),
+    amigo_de(Y, Z),
+    amigo_de(X, Z).
+
+amigoshibridos(X):-
+    hombre(X),
+    mujer(Y),
+    amigo_de(X,Y),
+    write(Y).
+
+amigosdecantanteoscuro(X,Y):-
+    amigo_de(X, Y),
+    amigo_de(X, Z),
+    amigo_de(Y, Z),
+    cantante(Z),
+    cabello_oscuro(Z),
+    (hombre(X),
+    hombre(Y);
+    mujer(X),
+    mujer(Y)).
