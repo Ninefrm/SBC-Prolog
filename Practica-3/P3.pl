@@ -29,3 +29,25 @@ comida_completa(Entrada, Principal, Postre):-entrada(Entrada),plato_principal(Pr
 postres(P):-
     postre(P).
 
+% PRACTICA 4
+valor_calorico(Entrada, Principal, Postre, Valor):-
+    comida_completa(Entrada, Principal, Postre),
+    calorias(Entrada, CaloriasE),
+    calorias(Principal, CaloriasPP),
+    calorias(Postre, CaloriasP),
+    Valor is CaloriasE + CaloriasP + CaloriasPP,
+    write(Valor).
+
+comida_equilibrada(Entrada, Principal, Postre):-
+    comida_completa(Entrada, Principal, Postre),
+    calorias(Entrada, CaloriasE),
+    calorias(Principal, CaloriasPP),
+    calorias(Postre, CaloriasP),
+    Valor is CaloriasE + CaloriasP + CaloriasPP,
+    Valor =< 800,
+    write(Valor).
+    
+    % calorias(plato_principal(Principal), CaloriasPP),
+    % calorias(postre(Postre),CaloriasP),
+    % write(CaloriasE + CaloriasP + CaloriasPP),
+    % write(Valor).
